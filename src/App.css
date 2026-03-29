@@ -1,38 +1,86 @@
-.App {
-  text-align: center;
+/* =============================================
+   APP LAYOUT STYLES
+   ============================================= */
+
+.app {
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ── Section dividers ── */
+.section-divider {
+  position: relative;
+  height: 1px;
+  background: var(--border-dim);
+  margin: 0 64px;
+  overflow: visible;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.section-divider::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -4px;
+  width: 8px;
+  height: 8px;
+  background: var(--bg-void);
+  border: 1px solid var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+  transform: translateX(-50%) rotate(45deg);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* ── Scroll progress bar ── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+  box-shadow: 0 0 8px var(--neon-cyan);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ── Back to top button ── */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-glow);
+  color: var(--neon-cyan);
+  font-size: 18px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  opacity: 0;
+  transform: translateY(16px);
 }
 
-.App-link {
-  color: #61dafb;
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.back-to-top:hover {
+  background: var(--neon-cyan);
+  color: var(--bg-void);
+  box-shadow: var(--glow-cyan);
+}
+
+@media (max-width: 600px) {
+  .section-divider {
+    margin: 0 24px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .back-to-top {
+    bottom: 24px;
+    right: 24px;
   }
 }

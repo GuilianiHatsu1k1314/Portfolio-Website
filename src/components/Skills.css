@@ -1,0 +1,224 @@
+/* =============================================
+   SKILLS SECTION STYLES
+   ============================================= */
+
+.skills {
+  padding: var(--section-padding);
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 245, 255, 0.02) 50%, transparent 100%);
+}
+
+.skills__header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.skills__header .section-label {
+  display: block;
+  text-align: center;
+}
+
+/* ── Category tabs ── */
+.skills__tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 40px 0 60px;
+}
+
+.skills__tab {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 8px 20px;
+  border: 1px solid var(--border-dim);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+}
+
+.skills__tab:hover {
+  color: var(--text-secondary);
+  border-color: rgba(0, 245, 255, 0.3);
+}
+
+.skills__tab.active {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  background: rgba(0, 245, 255, 0.06);
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.1);
+}
+
+/* ── Skills grid ── */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+/* ── Skill card ── */
+.skill-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-dim);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: var(--transition-smooth);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, var(--skill-color, rgba(0, 245, 255, 0.08)), transparent 70%);
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.skill-card:hover {
+  border-color: var(--skill-color-dim, rgba(0, 245, 255, 0.4));
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-card__icon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+  display: block;
+  line-height: 1;
+}
+
+.skill-card__name {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+/* Progress bar */
+.skill-card__bar-track {
+  height: 3px;
+  background: var(--border-dim);
+  border-radius: 2px;
+  overflow: visible;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.skill-card__bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--skill-color, var(--neon-cyan));
+  box-shadow: 0 0 8px var(--skill-color, var(--neon-cyan));
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+  position: relative;
+}
+
+.skill-card__bar-fill::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--skill-color, var(--neon-cyan));
+  box-shadow: 0 0 10px var(--skill-color, var(--neon-cyan));
+}
+
+.skill-card__level {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* ── Proficiency key ── */
+.skills__key {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 60px;
+  flex-wrap: wrap;
+}
+
+.skills__key-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.skills__key-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Certifications strip ── */
+.skills__certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.skills__cert-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px;
+  background: var(--bg-glass);
+  border: 1px solid var(--cert-color, var(--neon-cyan));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--cert-color, var(--neon-cyan)) 20%, transparent);
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  transition: var(--transition-fast);
+}
+
+.skills__cert-badge:hover {
+  background: var(--bg-raised);
+  transform: translateY(-2px);
+}
+
+.skills__cert-year {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--cert-color, var(--neon-cyan));
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.skills__cert-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+}
